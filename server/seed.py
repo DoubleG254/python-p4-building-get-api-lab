@@ -32,10 +32,13 @@ with app.app_context():
             name = fake.first_name()
         names.append(name)
 
+        # Replace 'bakery' with an actual Bakery object associated with the BakedGood
+        bakery = rc(bakeries)
+        
         bg = BakedGood(
             name=name,
             price=randint(1,10),
-            bakery=rc(bakeries)
+            bakery=bakery  # Use the actual bakery object
         )
 
         baked_goods.append(bg)
